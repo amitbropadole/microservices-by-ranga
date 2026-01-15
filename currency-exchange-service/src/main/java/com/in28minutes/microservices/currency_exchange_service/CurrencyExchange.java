@@ -1,10 +1,12 @@
 package com.in28minutes.microservices.currency_exchange_service;
 import java.math.BigDecimal;
 public class CurrencyExchange {
+	
 	private Long id;
 	private String from;
 	private String to;
 	private BigDecimal conversionMultiple;
+	private String environment; // New Field
 
 	// Default constructor (Needed for JPA/Deserialization later)
 	public CurrencyExchange() {}
@@ -23,7 +25,7 @@ public class CurrencyExchange {
 
 	public void setId(Long id) {this.id = id;}
 
-	public String getFrom() {return from;}
+	public String getFrom() {	return from;}
 
 	public void setFrom(String from) {this.from = from;}
 
@@ -34,4 +36,8 @@ public class CurrencyExchange {
 	public BigDecimal getConversionMultiple() {return conversionMultiple;}
 
 	public void setConversionMultiple(BigDecimal conversionMultiple) {this.conversionMultiple = conversionMultiple;}
+
+	public String getEnvironment() {return environment;}
+
+	public void setEnvironment(String environment) {this.environment = environment;}
 }
