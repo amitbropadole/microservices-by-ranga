@@ -1,12 +1,16 @@
 package com.in28minutes.microservices.limits_service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LimitsController {
 
+    @Autowired
+    private Configuration configuration;
+
     @GetMapping("/limits")
     public Limits retrieveLimits() {
-        // Hardcoded return for now
-        return new Limits(1, 1000);
+        // Now picking values from the configuration class
+        return new Limits(configuration.getMinimum(),configuration.getMaximum());
     }
 }
