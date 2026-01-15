@@ -10,12 +10,15 @@ import io.github.resilience4j.retry.annotation.Retry;
 public class CircuitBreakerController {
     private Logger logger = LoggerFactory.getLogger(CircuitBreakerController.class);
     @GetMapping("/sample-api")
-    @Retry(name = "sample-api")
+    @Retry(name = "sample-api", fallbackMethod = "hardcodedResponse")
     public String sampleApi() {
         logger.info("Sample api call received");
         ResponseEntity<String> forEntity = new
                 RestTemplate().getForEntity("http://localhost:8080/some-dummy-url",
                 String.class);
         return forEntity.getBody();
+    }
+    public String hardcodedResponse(Exception ex) {
+        return "fallback-response";
     }
 }
