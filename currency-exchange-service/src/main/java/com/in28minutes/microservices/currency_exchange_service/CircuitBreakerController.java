@@ -10,7 +10,7 @@ import io.github.resilience4j.retry.annotation.Retry;
 public class CircuitBreakerController {
     private Logger logger = LoggerFactory.getLogger(CircuitBreakerController.class);
     @GetMapping("/sample-api")
-    @Retry(name = "default")
+    @Retry(name = "sample-api")
     public String sampleApi() {
         logger.info("Sample api call received");
         ResponseEntity<String> forEntity = new
